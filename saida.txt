@@ -1,4 +1,9 @@
- [Gustavo] existe!
- [Lola] existe!
- [Gustavo] conhece [Giovanni]
- [Joao] NÃO conhece [Pedro]
+ [Alice] existe!
+ [Fernanda] NÃO existe!
+ [Laura] conhece [Nuno]
+ [Alice] conhece [Charlie]
+ [David] NÃO conhece [Grace]
+ [João] NÃO existe!
+ [Pedro] conhece [Rafael]
+ [Maria] NÃO conhece [João]
+ [Oscar] existe!
