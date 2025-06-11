@@ -1,0 +1,4 @@
+ [Gustavo] existe!
+ [Lola] existe!
+ [Gustavo] conhece [Giovanni]
+ [Joao] NÃO conhece [Pedro]

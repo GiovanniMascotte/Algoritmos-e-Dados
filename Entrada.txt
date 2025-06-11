@@ -1,0 +1,7 @@
+grupo: Gustavo Pedro Giovanni
+grupo: Binca Lara Raissa
+grupo: Joao Cleber Lola
+existe: Gustavo
+existe: Lola
+conhece: Gustavo Giovanni
+conhece: Joao Pedro
