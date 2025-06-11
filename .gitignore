@@ -1,0 +1,81 @@
+	# Compiled class files
+
+*.class
+
+
+# Package Files
+
+*.jar
+
+*.war
+
+*.ear
+
+*.zip
+
+*.tar.gz
+
+
+# Log files
+
+*.log
+
+log/
+
+
+# IDE specific files
+
+.idea/
+
+.project
+
+.classpath
+
+.settings/
+
+.metadata/
+
+*.iml
+
+*.ipr
+
+*.iws
+
+.vscode/
+
+
+# Eclipse specific files
+
+.apt_generated/
+
+.factorypath
+
+.sts4-cache/
+
+
+# OS generated files
+
+.DS_Store
+
+Thumbs.db
+
+
+# Temporary files
+
+*.tmp
+
+*.temp
+
+*~
+
+
+# Maven / Gradle (if you decide to use them later)
+
+/target/
+
+/build/
+
+
+# Generated output files
+
+saida.txt
