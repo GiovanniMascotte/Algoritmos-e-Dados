@@ -1,14 +1,14 @@
-grupo: Alice Bob Charlie
-grupo: David Eve Frank
-grupo: Grace Harry Ivy
-grupo: Laura Maria Nuno Oscar
-existe: Alice
-existe: Fernanda
-conhece: Laura Nuno
-conhece: Alice Charlie
-conhece: David Grace
-existe: João
-grupo: Pedro Quintino Rafael
-conhece: Pedro Rafael
-conhece: Maria João
-existe: Oscar
+grupo: Joao Olga
+grupo: Maria Manuel Alface
+grupo: Fabio Duda Ivo
+existe: Olga
+existe: Julia
+conhece: Julia Alface
+conhece: Fabio Ivo
+criaFila: Guiche1
+chegou: Ana Maria
+criaFila: Guiche2
+chegou: Joao Ivo Manuel Bia Olga Guga Pedro Alface Fabio
+desiste: Ana Pedro
+atendeFila: Guiche1 Guiche2 Guiche2
+imprime:

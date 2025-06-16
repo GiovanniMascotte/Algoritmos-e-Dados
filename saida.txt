@@ -1,9 +1,6 @@
- [Alice] existe!
- [Fernanda] NÃO existe!
- [Laura] conhece [Nuno]
- [Alice] conhece [Charlie]
- [David] NÃO conhece [Grace]
- [João] NÃO existe!
- [Pedro] conhece [Rafael]
- [Maria] NÃO conhece [João]
- [Oscar] existe!
+ [Olga] existe!
+ [Julia] NÃO existe!
+ [Julia] NÃO conhece [Alface]
+ [Fabio] conhece [Ivo]
+#Guiche1 [Alface Manuel Guga]
+#Guiche2 [Ivo Fabio Bia]
