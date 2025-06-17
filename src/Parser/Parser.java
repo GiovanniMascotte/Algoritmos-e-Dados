@@ -12,7 +12,7 @@ public class Parser {
             leitor = new Scanner(file);
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + e.getMessage());
-            leitor = null; // Garante que o leitor seja nulo se o arquivo não for encontrado
+            leitor = null;
         }
     }
 
