@@ -16,13 +16,12 @@ import java.nio.charset.StandardCharsets;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Diretório de trabalho atual: " + System.getProperty("user.dir"));
+        //System.out.println("Diretório de trabalho atual: " + System.getProperty("user.dir"));
 
         final String ARQUIVO_ENTRADA = "entrada.txt";
         final String ARQUIVO_SAIDA = "saida.txt";
 
         PessoasConhecemPessoas sistemaPessoas = new PessoasConhecemPessoas();
-        // Instancia o sistema de filas, passando a referência do sistema de pessoas
         SistemaFilas sistemaFilas = new SistemaFilas(sistemaPessoas);
 
         File fileEntrada = new File(ARQUIVO_ENTRADA);
@@ -38,26 +37,17 @@ public class Main {
             while (parser.hasNext()) {
                 String line = parser.nextLine().trim(); //tira espaço em branco da linha
 
-                //Pula linhas vazias, linhas que começam com '#' (comentários)ou linhas que começam com ---
                 if (line.isEmpty() || line.startsWith("#") || line.startsWith("---")) {
                     continue;
                 }
-                // ----------------------------------------------
 
                 String[] tokens = line.split(" ");
-
-                // Esta validação 'if (tokens.length == 0)' ainda é útil caso a linha
-                // contenha apenas espaços em branco que o .trim() resolveu, mas era originalmente
-                // algo como "    ". No entanto, a linha acima já deve pegar a maioria desses casos.
                 if (tokens.length == 0) {
                     System.err.println("Atenção: Linha vazia ou com apenas espaços ignorada: '" + line + "'");
                     continue;
                 }
-
-                // A parte do comando (ex: "criaFila:", "chegou:")
                 String comando = tokens[0].replace(":", "").toLowerCase();
-                // Pega todos os parâmetros após o comando.
-                // Se não houver parâmetros (ex: 'imprime:'), isso resultará em um array vazio, que é tratado.
+                //se nao tiver parametros ('imprime:'), sera um array vazio
                 String[] parametros = Arrays.copyOfRange(tokens, 1, tokens.length);
 
                 switch (comando) {
@@ -67,12 +57,11 @@ public class Main {
                             break;
                         }
                         for (String idFila : parametros) {
-                            idFila = idFila.trim(); // Trim cada ID individualmente
+                            idFila = idFila.trim();
                             if (!idFila.isEmpty()) {
                                 if (sistemaFilas.criaFila(idFila)) {
-                                    // System.out.println("Sucesso: Fila '" + idFila + "' criada."); // Opcional, para debug
+                                    //System.out.println("Sucesso: Fila '" + idFila + "' criada."); // Opcional, para debug
                                 } else {
-                                    // Comentar para evitar spam na saída se for esperado que IDs repetidos não gerem erro crítico
                                     System.out.println("Aviso: Fila '" + idFila + "' já existe e não foi recriada.");
                                 }
                             } else {
@@ -91,7 +80,7 @@ public class Main {
                             if (!idFila.isEmpty()) {
                                 String pessoaAtendida = sistemaFilas.atendeFila(idFila);
                                 if (pessoaAtendida != null) {
-                                    // System.out.println("Sucesso: '" + pessoaAtendida + "' atendido(a) da fila '" + idFila + "'."); // Opcional, para debug
+                                    // System.out.println("Sucesso: '" + pessoaAtendida + "' atendido(a) da fila '" + idFila + "'.");
                                 } else {
                                     System.out.println("Aviso: Fila '" + idFila + "' não existe ou está vazia. Ninguém para atender.");
                                 }
@@ -110,7 +99,7 @@ public class Main {
                             nomePessoa = nomePessoa.trim();
                             if (!nomePessoa.isEmpty()) {
                                 sistemaFilas.chegou(nomePessoa);
-                                // System.out.println("Sucesso: '" + nomePessoa + "' adicionado(a) à fila."); // Opcional, para debug
+                                // System.out.println("Sucesso: '" + nomePessoa + "' adicionado(a) à fila.");
                             } else {
                                 System.err.println("Aviso: Ignorando nome de pessoa vazio no comando 'chegou': '" + line + "'");
                             }
@@ -122,10 +111,7 @@ public class Main {
                             System.err.println("Erro: Comando 'desiste' inválido. Formato esperado: 'desiste: nome [nome1, nome2, ...]' - Linha: '" + line + "'");
                             break;
                         }
-                        // O método desiste já recebe o array de nomes
                         List<String> pessoasQueDesistiram = sistemaFilas.desiste(parametros);
-                        // A mensagem de aviso para pessoas não encontradas já é tratada dentro de desiste.
-                        // Não é necessário imprimir nada aqui, a menos que queira um resumo.
                         break;
 
                     case "imprime":
@@ -139,35 +125,32 @@ public class Main {
                         }
                         break;
 
-                    // Comandos existentes que você já tinha no seu Main.java
                     case "grupo":
-                         if (parametros.length == 0) { // Ajustado para usar 'parametros'
-                             System.err.println("Erro: Comando 'grupo' inválido. Formato esperado: 'grupo: nome1 nome2 ...' - Linha: '" + line + "'");
-                             break;
-                         }
-                         // Trim os nomes antes de passar para o criarGrupo
-                         String[] nomesGrupo = new String[parametros.length];
-                         boolean temNomeInvalido = false;
-                         for(int i = 0; i < parametros.length; i++) {
-                             nomesGrupo[i] = parametros[i].trim();
-                             if (nomesGrupo[i].isEmpty()) {
-                                 temNomeInvalido = true;
-                                 break;
-                             }
-                         }
-                         if (temNomeInvalido) {
+                        if (parametros.length == 0) {
+                            System.err.println("Erro: Comando 'grupo' inválido. Formato esperado: 'grupo: nome1 nome2 ...' - Linha: '" + line + "'");
+                            break;
+                        }
+                        String[] nomesGrupo = new String[parametros.length];
+                        boolean temNomeInvalido = false;
+                        for(int i = 0; i < parametros.length; i++) {
+                            nomesGrupo[i] = parametros[i].trim();
+                            if (nomesGrupo[i].isEmpty()) {
+                                temNomeInvalido = true;
+                                break;
+                            }
+                        }
+                        if (temNomeInvalido) {
                                 System.err.println("Erro: Comando 'grupo' contém nomes vazios. Linha: '" + line + "'");
                                 break;
-                         }
-                         if (!sistemaPessoas.criarGrupo(nomesGrupo)) {
-                             System.out.println("Aviso: Falha ao criar grupo para '" + line + "'. Um ou mais membros já pertencem a um grupo existente.");
-                         } else {
-                             // System.out.println("Sucesso: Grupo criado para '" + line + "'.");
-                         }
-                         break;
+                        }
+                        if (!sistemaPessoas.criarGrupo(nomesGrupo)) {
+                            System.out.println("Aviso: Falha ao criar grupo para '" + line + "'. Um ou mais membros já pertencem a um grupo existente.");
+                        } else {
+                        }
+                        break;
 
                     case "existe":
-                        if (parametros.length != 1) { // Ajustado para usar 'parametros'
+                        if (parametros.length != 1) {
                             System.err.println("Erro: Comando 'existe' inválido. Formato esperado: 'existe: nome' - Linha: '" + line + "'");
                             break;
                         }
@@ -184,7 +167,7 @@ public class Main {
                         break;
 
                     case "conhece":
-                        if (parametros.length != 2) { // Ajustado para usar 'parametros'
+                        if (parametros.length != 2) {
                             System.err.println("Erro: Comando 'conhece' inválido. Formato esperado: 'conhece: nome1 nome2' - Linha: '" + line + "'");
                             break;
                         }
@@ -214,7 +197,7 @@ public class Main {
             return;
         }
 
-        System.out.println("\n--- Conteúdo do arquivo de saída (" + ARQUIVO_SAIDA + ") ---");
+        System.out.println("\n----- Conteúdo do arquivo de saída (" + ARQUIVO_SAIDA + ") -----");
         try {
             List<String> linhasSaida = Files.readAllLines(Paths.get(ARQUIVO_SAIDA), StandardCharsets.UTF_8);
 
