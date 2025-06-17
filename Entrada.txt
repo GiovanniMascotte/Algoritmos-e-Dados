@@ -1,14 +1,27 @@
-grupo: Joao Olga
-grupo: Maria Manuel Alface
-grupo: Fabio Duda Ivo
-existe: Olga
-existe: Julia
-conhece: Julia Alface
-conhece: Fabio Ivo
+grupo: Alex Bia
+grupo: Carlos Daniel
+grupo: Erika Fabio
+
+existe: Alex
+existe: Bia
+existe: Carlos
+existe: Daniel
+existe: Erika
+existe: Fabio
+existe: Antenor
+
+conhece: Alex Bia
+conhece Carlos Antenor
+
 criaFila: Guiche1
-chegou: Ana Maria
 criaFila: Guiche2
-chegou: Joao Ivo Manuel Bia Olga Guga Pedro Alface Fabio
-desiste: Ana Pedro
-atendeFila: Guiche1 Guiche2 Guiche2
+
+chegou: Alex
+chegou: Carlos
+chegou: Bia
+chegou: Erika
+chegou: Daniel
+chegou: Fabio
+chegou: Zeca
+
 imprime:
